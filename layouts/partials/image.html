@@ -1,0 +1,18 @@
+{{/* 
+  This image.html partial has been added to fix missing partial error.
+  It handles responsive image rendering with fallbacks.
+*/}}
+
+{{ $src := .Src }}
+{{ $alt := .Alt }}
+{{ $class := .Class }}
+{{ $loading := default "lazy" .Loading }}
+
+{{ if $src }}
+<img 
+  data-src="{{ $src | absURL }}" 
+  alt="{{ $alt }}" 
+  class="{{ $class }}" 
+  loading="{{ $loading }}"
+>
+{{ end }} 

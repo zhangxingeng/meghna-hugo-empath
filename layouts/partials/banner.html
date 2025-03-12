@@ -1,10 +1,9 @@
 {{ $data := index site.Data site.Language.Lang }} {{ if
 $data.banner.banner.enable }} {{ with $data.banner.banner }} {{"<!-- Welcome Slider-->"
 | safeHTML}}
-<section
-  class="hero-area" {{ partial `bg-image.html` (dict `Src` .bg_image_webp) | safeHTMLAttr }}
->
-  {{ partial "image" (dict "Src" .bg_image_webp "Alt"
+
+<section class="hero-area" style="background-image: url('{{ .bg_image | absURL }}');">
+  {{ partial "image" (dict "Src" .bg_image "Alt"
   .Title "Class" "d-none") }}
 
   <div class="block">

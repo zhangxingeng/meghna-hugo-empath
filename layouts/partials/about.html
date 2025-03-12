@@ -7,10 +7,19 @@
         {{"<!-- section title -->" | safeHTML}}
         <div class="title text-center wow fadeIn" data-wow-duration="1500ms">
           <h2>
-            {{ with .title }} {{ index (split . " ") 0 | safeHTML }} {{ end
-            }}<span class="color">
-              {{ with .title }} {{ index (split . " ") 1 | safeHTML }} {{ end }}
-            </span>
+            {{ with .title }}
+              {{ $words := split . " " }}
+              {{ $lastIndex := sub (len $words) 1 }}
+              
+              {{ range $index, $word := $words }}
+                {{ if eq $index $lastIndex }}
+                  <span class="color">{{ $word }}</span>
+                {{ else }}
+                  {{ $word }}
+                {{ end }}
+                {{ if ne $index $lastIndex }} {{ end }}
+              {{ end }}
+            {{ end }}
           </h2>
           <div class="border-meghna"></div>
         </div>

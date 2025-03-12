@@ -6,7 +6,7 @@
 <section class="section section-bg about-2 padding-0" id="feature">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-lg-6 padding-0" {{ partial `bg-image.html` (dict `Src` .image_webp ) | safeHTMLAttr }}>
+			<div class="col-lg-6 padding-0" style="background-image: url('{{ .image | absURL }}');">
 				<!-- this image is for trigger this section fallback background image -->
   {{ partial "image" (dict "Src" .image "Alt"
   .Title "Class" "d-none") }}

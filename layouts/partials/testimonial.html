@@ -3,10 +3,9 @@
 {{ if $data.testimonial.testimonial.enable }}
 {{ with $data.testimonial.testimonial }}
 {{"<!-- Start Testimonial -->" | safeHTML}}
-<section id="testimonial" class="testimonial overly section bg-2"
-{{ partial `bg-image.html` (dict `Src` .bg_image_webp ) | safeHTMLAttr }}>
+<section id="testimonial" class="testimonial overly section bg-2" style="background-image: url('{{ .bg_image | absURL }}');">
 	<!-- this image is for trigger this section fallback background image -->
-  {{ partial "image" (dict "Src" .bg_image_webp  "Class" "d-none") }}
+  {{ partial "image" (dict "Src" .bg_image "Class" "d-none") }}
 	<div class="container">
 		<div class="row">
 			<div class="col-xl-12">
