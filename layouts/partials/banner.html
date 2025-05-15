@@ -6,17 +6,32 @@ $data.banner.banner.enable }} {{ with $data.banner.banner }} {{"<!-- Welcome Sli
   {{ partial "image" (dict "Src" .bg_image "Alt"
   .Title "Class" "d-none") }}
 
-  <div class="block">
-    {{ if .icon }}
-    <div class="video-button">
-      <i class="{{ .icon }}"></i>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 text-center">
+        <div class="block">
+          {{ if .icon }}
+          <div class="video-button mb-4">
+            <i class="{{ .icon }}"></i>
+          </div>
+          {{ end }}
+          <h1>{{ .title | markdownify }}</h1>
+          <p>{{ .content | markdownify }}</p>
+          
+          {{ if isset . "buttons" }}
+          <div class="button-group">
+            {{ range .buttons }}
+            <a href="{{ .link }}" class="btn {{ .class }}" {{ if eq .link "#demo" }}data-scroll{{ end }} aria-label="{{ .label }}">{{ .label }}</a>
+            {{ end }}
+          </div>
+          {{ else if .button.enable }} 
+          {{ with .button }}
+          <a href="{{ .link }}" class="btn btn-transparent page-scroll" aria-label="{{ .label }}">{{ .label }}</a>
+          {{ end }} 
+          {{ end }}
+        </div>
+      </div>
     </div>
-    {{ end }}
-    <h1>{{ .title | markdownify }}</h1>
-    <p>{{ .content | markdownify }}</p>
-    {{ if .button.enable }} {{ with .button }}
-    <a href="{{ .link }}" class="btn btn-transparent page-scroll" aria-label="{{ .label }}">{{ .label }}</a>
-    {{ end }} {{ end }}
   </div>
 </section>
 {{"<!-- /Welcome Slider-->" | safeHTML}} {{end}} {{end}}

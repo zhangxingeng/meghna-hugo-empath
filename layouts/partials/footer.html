@@ -7,19 +7,18 @@
 				{{"<!-- Footer Social Links -->" | safeHTML}}
 				<div class="social-icon">
 					<ul class="list-inline">
-						{{ range site.Params.social }}
-						<li class="list-inline-item"><a href="{{ .link | safeURL }}" aria-label="{{ .icon }}"><i class="{{ .icon }}"></i></a></li>
-						{{ end }}
+						<li class="list-inline-item"><a href="https://linkedin.com/company/empath-legal" aria-label="LinkedIn"><i class="ti-linkedin"></i></a></li>
+						<li class="list-inline-item"><a href="https://twitter.com/empathlegal" aria-label="Twitter"><i class="ti-twitter-alt"></i></a></li>
 					</ul>
 				</div>
 
 				{{"<!-- copyright -->" | safeHTML}}
 				<div class="copyright text-center">
 					<a href="{{ site.Home.Permalink }}" aria-label="Home">
-						<img src="{{ site.Params.logo | absURL }}" alt="{{ site.Title }}">
+						<img src="{{ site.Params.logo | absURL }}" alt="{{ site.Title }}" style="max-height: 50px;">
 					</a>
-					<br>
-					<p>{{ site.Params.copyright | markdownify }}</p>
+					<p class="mt-4">{{ site.Params.copyright | markdownify }}</p>
+					<p class="small text-muted">AI-Powered Juror Insights for Legal Professionals</p>
 				</div>
 			</div>
 		</div>
