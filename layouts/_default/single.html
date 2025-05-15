@@ -11,7 +11,11 @@
           <li class="list-inline-item"><a href="{{ `author/` | relLangURL }}{{ .Params.Author | urlize }}/" aria-label="Author: {{ .Params.Author }}">{{ .Params.Author }}</a></li>
           <li class="list-inline-item">{{ dateFormat "Monday, Jan 2, 2006" .Date }}</li>
         </ul>
-        {{ partial "image.html" (dict "Src" .Params.Image "Alt" "Blog Image" "Class" "img-fluid mb-50 lozad") }}
+        {{ if .Params.Image }}
+          {{ partial "image.html" (dict "Src" .Params.Image "Alt" .Title "Class" "img-fluid mb-50 lozad") }}
+        {{ else if .Params.Image_webp }}
+          {{ partial "image.html" (dict "Src" .Params.Image_webp "Alt" .Title "Class" "img-fluid mb-50 lozad") }}
+        {{ end }}
       </div>
       <div class="col-lg-8 offset-lg-2">
         <div class="post-single-content">

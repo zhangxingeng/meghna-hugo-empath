@@ -1,6 +1,5 @@
 {{/* 
-  This image.html partial has been added to fix missing partial error.
-  It handles responsive image rendering with fallbacks.
+  Enhanced image.html partial for better responsive image handling and SEO
 */}}
 
 {{ $src := .Src }}
@@ -10,9 +9,13 @@
 
 {{ if $src }}
 <img 
+  src="{{ $src | absURL }}" 
   data-src="{{ $src | absURL }}" 
   alt="{{ $alt }}" 
   class="{{ $class }}" 
   loading="{{ $loading }}"
+  {{ if not (in $class "d-none") }}
+  itemprop="image"
+  {{ end }}
 >
 {{ end }} 
